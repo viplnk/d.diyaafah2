@@ -3,857 +3,745 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دائرة الضيافة | Royal Edition</title>
+    <title>دائرة الضيافة - خدمات متكاملة في مكة المكرمة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #57a6c9;
+            --accent-color: #d4af37;
+            --dark-color: #0a2d3e;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            font-family: 'Noto Sans Arabic', sans-serif;
-            background: #fefefe;
-            color: #333;
+            background-color: #f5f7fa;
+            color: var(--text-color);
             line-height: 1.6;
         }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+
         /* Header Styles */
-        .main-header {
-            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
-            color: #fff;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
-        
+
         .logo-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #ffd700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 15px;
-            border: 3px solid #fff;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
-        
-        .logo-img i {
-            color: #0c2461;
-            font-size: 40px;
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
         }
-        
-        .logo-text h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-            color: #ffd700;
+
+        .logo-icon {
+            color: var(--accent-color);
+            font-size: 2rem;
         }
-        
-        .logo-text p {
-            font-size: 14px;
-            color: #e0e0e0;
-        }
-        
-        .contact-info {
-            text-align: left;
-        }
-        
-        .contact-info p {
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        
-        .contact-info i {
-            color: #ffd700;
-            margin-left: 5px;
-        }
-        
-        /* Navigation */
-        .navbar {
-            background: #1e3c72;
-            padding: 0;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-menu {
+
+        nav ul {
             display: flex;
             list-style: none;
         }
-        
-        .nav-item {
-            margin: 0 5px;
+
+        nav ul li {
+            margin-left: 25px;
         }
-        
-        .nav-link {
-            color: #fff;
+
+        nav ul li a {
             text-decoration: none;
-            padding: 15px 20px;
-            display: block;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 5px 0;
             position: relative;
         }
-        
-        .nav-link:hover {
-            background: #ffd700;
-            color: #0c2461;
+
+        nav ul li a:hover {
+            color: var(--primary-color);
         }
-        
-        .nav-link.active {
-            background: #ffd700;
-            color: #0c2461;
-        }
-        
-        .nav-link.active:after {
+
+        nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
             width: 100%;
-            height: 3px;
-            background: #ffd700;
         }
-        
-        .nav-icons {
-            display: flex;
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
         }
-        
-        .nav-icons a {
-            color: #fff;
-            margin-right: 15px;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-icons a:hover {
-            color: #ffd700;
-        }
-        
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(12, 36, 97, 0.85), rgba(30, 55, 153, 0.9)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(10, 45, 62, 0.85), rgba(10, 45, 62, 0.9)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
-            color: #fff;
+            color: white;
             padding: 100px 0;
             text-align: center;
-            margin-bottom: 50px;
         }
-        
-        .hero-content h2 {
-            font-size: 42px;
+
+        .hero h2 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: #ffd700;
         }
-        
-        .hero-content p {
-            font-size: 18px;
+
+        .hero p {
+            font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 30px;
-            line-height: 1.8;
         }
-        
-        .btn {
+
+        .cta-button {
             display: inline-block;
-            background: #ffd700;
-            color: #0c2461;
-            padding: 12px 35px;
-            border-radius: 30px;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 15px 35px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: 2px solid #ffd700;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 2px solid var(--accent-color);
         }
-        
-        .btn:hover {
-            background: transparent;
-            color: #ffd700;
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent-color);
         }
-        
+
         /* Services Section */
-        .services-section {
-            padding: 80px 0;
-        }
-        
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: #0c2461;
-            margin-bottom: 15px;
+            margin: 60px 0 40px;
+            color: var(--primary-color);
+            font-size: 2.5rem;
             position: relative;
-            display: inline-block;
         }
-        
-        .section-title h2:after {
+
+        .section-title::after {
             content: '';
             position: absolute;
-            width: 70px;
-            height: 3px;
-            background: #ffd700;
-            bottom: -10px;
+            bottom: -15px;
             right: 50%;
             transform: translateX(50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
         }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 60px;
         }
-        
+
         .service-card {
-            background: #fff;
+            background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid #ffd700;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-        
+
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
-        .service-icon {
-            background: #0c2461;
-            color: #ffd700;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
         }
-        
+
         .service-content {
             padding: 25px;
         }
-        
+
         .service-content h3 {
-            font-size: 22px;
+            color: var(--primary-color);
             margin-bottom: 15px;
-            color: #0c2461;
+            font-size: 1.5rem;
         }
-        
-        .service-content p {
-            color: #666;
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
             margin-bottom: 15px;
         }
-        
-        .service-link {
-            color: #1e3799;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .service-link i {
-            margin-right: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-link:hover i {
-            transform: translateX(-5px);
-        }
-        
-        /* About Section */
-        .about-section {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-        
-        .about-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-content h2 {
-            font-size: 36px;
-            color: #0c2461;
-            margin-bottom: 20px;
-        }
-        
-        .about-content p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-        
+
         /* Contact Section */
         .contact-section {
-            padding: 80px 0;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0;
         }
-        
+
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            gap: 40px;
         }
-        
-        .contact-info {
-            background: #0c2461;
-            color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-        }
-        
+
         .contact-info h3 {
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
         }
-        
-        .contact-detail {
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .contact-detail i {
-            color: #ffd700;
-            font-size: 20px;
-            margin-left: 15px;
-            margin-top: 5px;
-        }
-        
-        .contact-form {
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-        
-        .contact-form h3 {
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: #0c2461;
-        }
-        
-        .form-group {
+            align-items: center;
             margin-bottom: 20px;
         }
-        
-        .form-control {
+
+        .contact-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Noto Sans Arabic', sans-serif;
-            font-size: 16px;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: #0c2461;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: #0c2461;
-            color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
             border: none;
-            padding: 12px 35px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-form button {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid #0c2461;
+            transition: var(--transition);
         }
-        
-        .submit-btn:hover {
-            background: transparent;
-            color: #0c2461;
+
+        .contact-form button:hover {
+            background-color: #e6c12f;
         }
-        
+
         /* Footer */
-        .main-footer {
-            background: #0c2461;
-            color: #fff;
-            padding: 60px 0 20px;
+        footer {
+            background-color: #0a1922;
+            color: #aaa;
+            padding: 40px 0 20px;
         }
-        
+
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
-        
-        .footer-col h4 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            color: #ffd700;
+
+        .footer-column h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
             position: relative;
             padding-bottom: 10px;
         }
-        
-        .footer-col h4:after {
+
+        .footer-column h4::after {
             content: '';
             position: absolute;
-            width: 50px;
-            height: 2px;
-            background: #ffd700;
             bottom: 0;
             right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
         }
-        
-        .footer-col p {
-            margin-bottom: 20px;
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 15px;
         }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #ffd700;
-        }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: var(--transition);
         }
-        
+
         .social-links a:hover {
-            background: #ffd700;
-            color: #0c2461;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
             transform: translateY(-5px);
         }
-        
+
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 14px;
+            font-size: 0.9rem;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
+            .hero h2 {
+                font-size: 2.5rem;
             }
             
-            .logo {
-                margin-bottom: 20px;
+            nav ul {
+                display: none;
             }
             
-            .nav-container {
-                flex-direction: column;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .nav-menu {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                text-align: right;
             }
             
-            .nav-item {
-                margin: 5px;
+            .mobile-menu.active {
+                display: block;
             }
             
-            .hero-content h2 {
-                font-size: 32px;
+            .mobile-menu ul {
+                list-style: none;
             }
             
-            .section-title h2 {
-                font-size: 30px;
+            .mobile-menu ul li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-menu ul li a {
+                color: var(--dark-color);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.1rem;
+                display: block;
+                padding: 10px 0;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .nav-menu {
-                flex-direction: column;
-                width: 100%;
+            .hero h2 {
+                font-size: 2rem;
             }
             
-            .nav-item {
-                width: 100%;
-                margin: 0;
+            .hero p {
+                font-size: 1.1rem;
             }
             
-            .nav-link {
-                text-align: center;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            .section-title {
+                font-size: 2rem;
             }
             
-            .hero {
-                padding: 70px 0;
+            .logo-img {
+                height: 50px;
             }
             
-            .hero-content h2 {
-                font-size: 28px;
-            }
-            
-            .hero-content p {
-                font-size: 16px;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
+            .logo h1 {
+                font-size: 1.5rem;
             }
         }
-        
+
         @media (max-width: 576px) {
-            .logo-text h1 {
-                font-size: 24px;
+            .logo h1 {
+                font-size: 1.3rem;
             }
             
-            .contact-container, .about-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form, .contact-info {
-                padding: 25px;
+            .logo-img {
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-container">
-                <div class="logo">
-                    <div class="logo-img">
-                        <!-- Replace with your logo -->
-                        <i class="fas fa-crown"></i>
-                        <!-- <img src="your-logo.png" alt="دائرة الضيافة"> -->
-                    </div>
-                    <div class="logo-text">
-                        <h1>دائرة الضيافة</h1>
-                        <p>التميز في الخدمات الفاخرة والضيافة</p>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> +966 11 123 4567</p>
-                    <p><i class="fas fa-envelope"></i> info@hospitality-circle.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</p>
-                </div>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://6949d89d30e1aa8ca4b7ef56.imgix.net/825893fb-c206-4009-b425-4b77cdb40004.jpeg" alt="دائرة الضيافة" class="logo-img">
+                <h1>دائرة الضيافة</h1>
             </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
         </div>
     </header>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-container">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#" class="nav-link active">الرئيسية</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">عن الشركة</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">خدماتنا</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">أعمالنا</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">الفعاليات</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">اتصل بنا</a></li>
-                </ul>
-                <div class="nav-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
-            <div class="hero-content">
-                <h2>مرحبًا بكم في دائرة الضيافة</h2>
-                <p>نحن رواد في تقديم خدمات الضيافة الفاخرة والفعاليات المتميزة في المملكة العربية السعودية. نقدم حلولاً مبتكرة وخدمات استثنائية تلبي أعلى المعايير الدولية.</p>
-                <a href="#" class="btn">استكشف خدماتنا</a>
-            </div>
+            <h2>دائرة الضيافة - حلول متكاملة بمعايير عالمية</h2>
+            <p>نقدم خدمات متكاملة في مجال النقل والمقاولات والخدمات اللوجستية وتأشيرة العمرة والأمن والسلامة في مكة المكرمة والمنطقة الغربية</p>
+            <a href="#contact" class="cta-button">تواصل معنا الآن</a>
         </div>
     </section>
-    
+
     <!-- Services Section -->
-    <section class="services-section">
+    <section id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>خدماتنا المتميزة</h2>
-                <p>نقدم مجموعة واسعة من خدمات الضيافة والمناسبات التي تلبي جميع احتياجاتكم</p>
-            </div>
-            
+            <h2 class="section-title">خدماتنا المتكاملة</h2>
             <div class="services-grid">
+                <!-- Service 1 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-glass-cheers"></i>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="الخدمات اللوجستية" class="service-img">
                     <div class="service-content">
-                        <h3>تنظيم الحفلات والمناسبات</h3>
-                        <p>تنظيم كافة أنواع المناسبات من أفراح وحفلات وتخرج واجتماعات عمل مع الاهتمام بأدق التفاصيل.</p>
-                        <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                        <i class="fas fa-truck-loading service-icon"></i>
+                        <h3>الخدمات اللوجستية</h3>
+                        <p>خدمات نقل وتخزين وتوزيع متكاملة بمعايير عالية الجودة لتلبية جميع احتياجاتك اللوجستية.</p>
                     </div>
                 </div>
                 
+                <!-- Service 2 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="المقاولات" class="service-img">
                     <div class="service-content">
-                        <h3>خدمات الطعام والشراب</h3>
-                        <p>تقديم أشهى المأكولات العالمية والمحلية بإشراف أفضل الطهاة مع خدمات الضيافة الاحترافية.</p>
-                        <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                        <i class="fas fa-hard-hat service-icon"></i>
+                        <h3>المقاولات والتشييد</h3>
+                        <p>تنفيذ مشاريع المقاولات والتشييد بفريق هندسي متخصص ومواد عالية الجودة.</p>
                     </div>
                 </div>
                 
+                <!-- Service 3 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hotel"></i>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" alt="النقل" class="service-img">
                     <div class="service-content">
-                        <h3>حجز الفنادق والمنتجعات</h3>
-                        <p>نساعدكم في حجز أفضل الفنادق والمنتجعات الفاخرة حول العالم مع توفير عروض حصرية.</p>
-                        <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                        <i class="fas fa-bus service-icon"></i>
+                        <h3>خدمات النقل</h3>
+                        <p>نقل آمن ومريح بأسطول حديث من المركبات مع سائقين محترفين ومدربين.</p>
                     </div>
                 </div>
                 
+                <!-- Service 4 - تأشيرة العمرة (Makkah Mosque - FIXED URL) -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="تأشيرة العمرة - المسجد الحرام" class="service-img">
                     <div class="service-content">
-                        <h3>ترتيب السفر والسياحة</h3>
-                        <p>نخطط لرحلاتكم السياحية ونرتب كافة التفاصيل من تذاكر سفر وبرامج سياحية وإرشاد.</p>
-                        <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                        <i class="fas fa-passport service-icon"></i>
+                        <h3>تأشيرة العمرة</h3>
+                        <p>إصدار تأشيرات العمرة والزيارة بسرعة وإجراءات مبسطة مع متابعة كاملة.</p>
                     </div>
                 </div>
                 
+                <!-- Service 5 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80" alt="الاستيراد والتصدير" class="service-img">
                     <div class="service-content">
-                        <h3>خدمات فاخرة استثنائية</h3>
-                        <p>نوفر لكم خدمات فاخرة استثنائية تشمل الليموزين الخاص، الشيف الخاص، التسوق الشخصي.</p>
-                        <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                        <i class="fas fa-ship service-icon"></i>
+                        <h3>الاستيراد والتصدير</h3>
+                        <p>خدمات شاملة للاستيراد والتصدير مع التعامل الجمركي والتخليص السريع.</p>
                     </div>
                 </div>
                 
+                <!-- Service 6 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="الفنادق" class="service-img">
                     <div class="service-content">
-                        <h3>استشارات الضيافة</h3>
-                        <p>نقدم استشارات متخصصة في مجال الضيافة والفنادق والخدمات الفاخرة للشركات والأفراد.</p>
-                        <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                        <i class="fas fa-hotel service-icon"></i>
+                        <h3>خدمات الفنادق</h3>
+                        <p>توفير وإدارة خدمات فندقية متكاملة لعملائنا في مكة المكرمة والمنطقة الغربية.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 7 - أنظمة الأمن والمراقبة (Security Cameras - FIXED URL) -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80" alt="أنظمة الأمن والمراقبة - كاميرات المراقبة" class="service-img">
+                    <div class="service-content">
+                        <i class="fas fa-shield-alt service-icon"></i>
+                        <h3>أنظمة الأمن والمراقبة</h3>
+                        <p>تركيب أنظمة أمنية متكاملة مع كاميرات مراقبة عالية الجودة ومراقبة على مدار الساعة.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 8 - أنظمة الإطفاء والسلامة (Fire Extinguishing Systems - FIXED URL) -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" alt="أنظمة الإطفاء والسلامة - أنظمة إطفاء الحريق" class="service-img">
+                    <div class="service-content">
+                        <i class="fas fa-fire-extinguisher service-icon"></i>
+                        <h3>أنظمة الإطفاء والسلامة</h3>
+                        <p>تركيب وصيانة أنظمة إطفاء الحريق وفق المعايير الدولية مع تقديم استشارات السلامة.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- About Section -->
-    <section class="about-section">
+    <section id="about" style="background-color: white; padding: 60px 0;">
         <div class="container">
-            <div class="about-container">
-                <div class="about-image">
-                    <!-- Image placeholder -->
-                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #0c2461, #1e3799); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #ffd700; font-size: 24px;">
-                        <i class="fas fa-crown fa-4x"></i>
-                    </div>
+            <h2 class="section-title">من نحن</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 20px;">دائرة الضيافة - شركة متكاملة الخدمات</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        نحن شركة رائدة في مجال تقديم الخدمات المتكاملة في مكة المكرمة والمنطقة الغربية، نتمتع بخبرة واسعة في مجالات النقل والمقاولات والخدمات اللوجستية وتأشيرة العمرة والاستيراد والتصدير وخدمات الفنادق والأمن والسلامة.
+                    </p>
+                    <p style="font-size: 1.1rem;">
+                        نلتزم بمعايير الجودة العالمية ونحرص على تقديم خدمات متميزة تلبي توقعات عملائنا الكرام. فريق عملنا من المحترفين المدربين جاهزون لخدمتكم على مدار الساعة.
+                    </p>
                 </div>
-                <div class="about-content">
-                    <h2>من نحن</h2>
-                    <p>تأسست "دائرة الضيافة" عام 2010 كمؤسسة رائدة في مجال الخدمات الفاخرة وتنظيم الفعاليات في المملكة العربية السعودية. نحن نؤمن بأن الضيافة الحقيقية هي فن يرتقي إلى مستوى التميز.</p>
-                    <p>بفريق من الخبراء والمتخصصين في مجالات الضيافة والخدمات الفاخرة، نلتزم بتقديم الأفضل في كل تفصيل، من التخطيط الدقيق إلى التنفيذ المتقن.</p>
-                    <p>نفتخر بتقديم خدماتنا بمعايير ملكية، مع الالتزام بأعلى مستويات الجودة والاحترافية. ثقتكم بنا هي شرف نحرص على تحقيقه يومًا بعد يوم.</p>
-                    <a href="#" class="btn">اقرأ المزيد عنا</a>
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" alt="فريق العمل" style="width: 100%; border-radius: 10px; box-shadow: var(--shadow);">
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>تواصل معنا</h2>
-                <p>نحن هنا لخدمتكم في أي وقت، لا تتردد في التواصل معنا</p>
-            </div>
-            
+            <h2 class="section-title" style="color: white;">تواصل معنا</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>معلومات الاتصال</h3>
-                    <div class="contact-detail">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>العنوان</h4>
-                            <p>الرياض، حي المروج، شارع الملك فهد<br>المملكة العربية السعودية</p>
+                    <h3>معلومات التواصل</h3>
+                    <p>نحن هنا لخدمتكم على مدار الساعة. لا تتردد في التواصل معنا لأي استفسار أو طلب خدمة.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>العنوان</h4>
+                                <p>شارع عبدالله عارف، مكة المكرمة 24221</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="contact-detail">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>الهاتف</h4>
-                            <p>+966 11 123 4567<br>+966 50 123 4567</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>الهاتف</h4>
+                                <p>+966539875432</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="contact-detail">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>البريد الإلكتروني</h4>
-                            <p>info@hospitality-circle.com<br>support@hospitality-circle.com</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>البريد الإلكتروني</h4>
+                                <p>d.diyaafah@gmail.com</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4>واتساب</h4>
+                                <p><a href="https://wa.me/966539875432" style="color: var(--accent-color); text-decoration: none;">ارسل رسالة عبر واتساب</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>أرسل رسالة</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="الاسم الكامل" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="البريد الإلكتروني" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="الموضوع" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="رسالتك" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">إرسال الرسالة</button>
+                    <h3>أرسل لنا رسالة</h3>
+                    <form id="contactForm">
+                        <input type="text" placeholder="الاسم الكامل" required>
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                        <input type="tel" placeholder="رقم الهاتف">
+                        <textarea placeholder="رسالتك" rows="5" required></textarea>
+                        <button type="submit">إرسال الرسالة</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
-    <footer class="main-footer">
+    <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col">
-                    <h4>دائرة الضيافة</h4>
-                    <p>نخبة الخدمات الفاخرة والضيافة الملكية التي تليق بذوقكم الرفيع. خبرة سنوات في تنظيم المناسبات والفعاليات والخدمات الاستثنائية.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>روابط سريعة</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">الرئيسية</a></li>
-                        <li><a href="#">عن الشركة</a></li>
-                        <li><a href="#">خدماتنا</a></li>
-                        <li><a href="#">أعمالنا</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>خدماتنا</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">تنظيم الحفلات</a></li>
-                        <li><a href="#">خدمات الطعام</a></li>
-                        <li><a href="#">حجز الفنادق</a></li>
-                        <li><a href="#">ترتيب السفر</a></li>
-                        <li><a href="#">خدمات فاخرة</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>اشترك في نشرتنا</h4>
-                    <p>اشترك للحصول على آخر العروض والأخبار</p>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني" style="margin-bottom: 15px;">
-                        <button class="submit-btn" style="width: 100%;">اشترك الآن</button>
+                <div class="footer-column">
+                    <img src="https://6949d89d30e1aa8ca4b7ef56.imgix.net/825893fb-c206-4009-b425-4b77cdb40004.jpeg" alt="دائرة الضيافة" class="footer-logo">
+                    <p>شركة متكاملة الخدمات في مكة المكرمة والمنطقة الغربية، نقدم حلولاً شاملة في مجالات النقل والمقاولات والخدمات اللوجستية وتأشيرة العمرة والاستيراد والتصدير وخدمات الفنادق والأمن والسلامة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/966539875432"><i class="fab fa-whatsapp"></i></a>
                     </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="#home" style="color: #aaa; text-decoration: none; transition: var(--transition);">الرئيسية</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#services" style="color: #aaa; text-decoration: none; transition: var(--transition);">خدماتنا</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#about" style="color: #aaa; text-decoration: none; transition: var(--transition);">من نحن</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#contact" style="color: #aaa; text-decoration: none; transition: var(--transition);">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>خدماتنا</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px; color: #aaa;">الخدمات اللوجستية</li>
+                        <li style="margin-bottom: 10px; color: #aaa;">المقاولات والتشييد</li>
+                        <li style="margin-bottom: 10px; color: #aaa;">خدمات النقل</li>
+                        <li style="margin-bottom: 10px; color: #aaa;">تأشيرة العمرة</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>العنوان</h4>
+                    <p><i class="fas fa-map-marker-alt" style="margin-left: 10px; color: var(--accent-color);"></i> شارع عبدالله عارف، مكة المكرمة 24221</p>
+                    <p><i class="fas fa-phone" style="margin-left: 10px; color: var(--accent-color);"></i> +966539875432</p>
+                    <p><i class="fas fa-envelope" style="margin-left: 10px; color: var(--accent-color);"></i> d.diyaafah@gmail.com</p>
+                    <p><i class="fab fa-whatsapp" style="margin-left: 10px; color: var(--accent-color);"></i> <a href="https://wa.me/966539875432" style="color: #aaa; text-decoration: none;">راسلنا على واتساب</a></p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2023 دائرة الضيافة | تم التصميم بأعلى معايير الفخامة والجودة</p>
+                <p>© 2023 دائرة الضيافة. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // Smooth scrolling for navigation links
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('شكراً لتواصلكم معنا! سنرد عليكم في أقرب وقت ممكن.');
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -864,35 +752,12 @@
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100,
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
         });
-        
-        // Add active class to current navigation item
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.forEach(item => item.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-        
-        // Form submission
-        const contactForm = document.querySelector('form');
-        if(contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('شكراً لتواصلكم معنا! سنرد عليكم في أقرب وقت.');
-                this.reset();
-            });
-        }
-        
-        // Logo replacement instructions
-        console.log("لإضافة شعارك: استبدل i.fa-crown داخل div.logo-img بـ <img src='مسار-شعارك.png' alt='شعار دائرة الضيافة'>");
     </script>
 </body>
 </html>
